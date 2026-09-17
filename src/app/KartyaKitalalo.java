@@ -1,5 +1,7 @@
 package app;
  
+import java.util.Scanner;
+
 public class KartyaKitalalo {
  
     static String[] pakli = new String[22];
@@ -71,19 +73,44 @@ public class KartyaKitalalo {
     }
  
     private static void Kirak() {
- 
+
+    int index = 1;
+
+    for (int i = 0; i < 7; i++) {
+
+        for (int j = 0; j < 3; j++) {
+            System.out.print(pakli[index] + "\t");
+            index++;
+        }
+
+        System.out.println();
     }
+}
  
     private static void Melyik() {
- 
-    }
+
+    Scanner scanner = new Scanner(System.in);
+
+    int oszlop;
+
+    do {
+        System.out.print("Melyik oszlopban van a kártyád? (1-3): ");
+        oszlop = scanner.nextInt();
+
+        if (oszlop < 1 || oszlop > 3) {
+            System.out.println("Hibás érték! 1, 2 vagy 3 lehet.");
+        }
+
+    } while (oszlop < 1 || oszlop > 3);
+
+}
  
     private static void Kever() {
- 
+        //kesobb
     }
  
     private static void EzVolt() {
- 
+        System.out.println("A kiválasztott lap: " + pakli[11]);
     }
  
 }//class
