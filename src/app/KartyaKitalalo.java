@@ -3,6 +3,7 @@ package app;
 import java.util.Scanner;
 
 public class KartyaKitalalo {
+    static Scanner scanner = new Scanner(System.in);
  
     static String[] pakli = new String[22];
  
@@ -14,9 +15,9 @@ public class KartyaKitalalo {
 
             Kirak(); //1 darab tömb
 
-            Melyik(); //input - Scanner
+            int oszlop = Melyik(); //input - Scanner
 
-            Kever(); //középre
+            Kever(oszlop); //középre
 
         }
 
@@ -87,9 +88,7 @@ public class KartyaKitalalo {
     }
 }
  
-    private static void Melyik() {
-
-    Scanner scanner = new Scanner(System.in);
+    private static int Melyik() {
 
     int oszlop;
 
@@ -102,11 +101,40 @@ public class KartyaKitalalo {
         }
 
     } while (oszlop < 1 || oszlop > 3);
-
+    return oszlop;
 }
  
-    private static void Kever() {
+    private static void Kever(int oszlop) {
         //kesobb
+        
+        String[] uj = new String [22];
+        switch (oszlop) {
+            case 1:
+                for (int i = 1; i < 7; i++) {
+                    uj[i]=pakli[20-(i-1)*3];
+                    uj[i+7]=pakli[19-(i-1)*3];
+                    uj[i+14]=pakli[21-(i-1)*3]; 
+                }
+                break;
+            case 2:
+                for (int i = 1; i < 7; i++) {
+                    uj[i+7]=pakli[19-(i-1)*3];
+                    uj[i]=pakli[20-(i-1)*3];
+                    uj[i+14]=pakli[21-(i-1)*3];   
+                }
+                break;
+            case 3:
+                for (int i = 1; i < 7; i++) {
+                    uj[i+7]=pakli[19-(i-1)*3];
+                    uj[i+14]=pakli[21-(i-1)*3];
+                    uj[i]=pakli[20-(i-1)*3];     
+                }
+                break;
+                
+                
+            default:
+                throw new AssertionError();
+        }
     }
  
     private static void EzVolt() {
