@@ -135,6 +135,8 @@ public class KartyaKitalalo {
             default:
                 throw new AssertionError();
         }
+        pakli = uj;
+        
     }
  
     private static void EzVolt() {
